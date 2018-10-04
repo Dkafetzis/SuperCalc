@@ -7,6 +7,7 @@ function writeToOutput(x,y) {
             result=result+"1"
             document.getElementById("output").innerHTML=result;
             break;
+        case 2:
     }
 
 
