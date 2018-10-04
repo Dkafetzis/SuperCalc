@@ -17,7 +17,7 @@ function writeToOutput(x,y) {
         case 2:
             storedValue=storedValue+Number(result)
             operationFlag=1
-    
+            document.getElementById("res").innerHTML=storedValue;
             break;
     
     
