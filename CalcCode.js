@@ -7,15 +7,8 @@ function writeToOutput(x,y) {
             result=result+y
             document.getElementById("output").innerHTML=result;
             break;
-      
-    
-    
-    
-    
-    
-    
-    
     }
+
 
 
 
