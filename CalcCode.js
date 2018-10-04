@@ -1,13 +1,13 @@
 let result=""
 
 
-function writeToOutput(x){
-    switch
+function writeToOutput(x) {
+    switch(x){
         case 1:
-            result=result+1
-            document..getElementById("output").innerHTML=result
+            result=result+"1"
+            document.getElementById("output").innerHTML=result;
             break;
-
+    }
 
 
 
