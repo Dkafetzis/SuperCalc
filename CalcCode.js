@@ -9,9 +9,10 @@ function writeToOutput(x,y) {
         break;
         case 2:
             storedValue=storedValue+Number(result);
+            quick = result;
             result = "";
-            document.getElementById("Num").innerHTML=0;
-            document.getElementById("Res").innerHTML=storedValue;
+            document.getElementById("Num").innerHTML=quick;
+            document.getElementById("Res").innerHTML=storedValue + "+";
         break;
     
     
