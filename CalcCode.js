@@ -1,34 +1,37 @@
-let result=""
-let storedValue=0
-let operand=0
+let result="";
+let storedValue=0;
+let operand=0;
+let pressedOperandButton=0;
 function calculate(z){
-    switch(z){
-        case 0:
-            storedValue=Number(result);
-            document.getElementById("res").innerHTML=storedValue;
-        break;
-        case 2:
-            storedValue=storedValue+Number(result);
-            document.getElementById("res").innerHTML=storedValue;
-        break;
-        case 3:
-            storedValue=storedValue-Number(result);
-            document.getElementById("res").innerHTML=storedValue;
-        break;
-        case 4:
-            storedValue=storedValue*Number(result);
-            document.getElementById("res").innerHTML=storedValue;
-        break;
-        case 5:
-            if(Number(result)==0){
-                document.getElementById("res").innerHTML="NaN"; 
-                document.getElementById("output").innerHTML="NaN";
-            }
-            else{
-                storedValue=storedValue/Number(result);
+    if(pressedOperandButton==0){
+        switch(z){
+            case 0:
+                storedValue=Number(result);
                 document.getElementById("res").innerHTML=storedValue;
-            }
-        break;    
+            break;
+            case 2:
+                storedValue=storedValue+Number(result);
+                document.getElementById("res").innerHTML=storedValue;
+            break;
+            case 3:
+              storedValue=storedValue-Number(result);
+                document.getElementById("res").innerHTML=storedValue;
+            break;
+            case 4:
+                storedValue=storedValue*Number(result);
+                document.getElementById("res").innerHTML=storedValue;
+            break;
+            case 5:
+                if(Number(result)==0){
+                    document.getElementById("res").innerHTML="NaN"; 
+                    document.getElementById("output").innerHTML="NaN";
+                }
+                else{
+                    storedValue=storedValue/Number(result);
+                    document.getElementById("res").innerHTML=storedValue;
+                }
+            break;    
+        }
     }
 }
 function writeToOutput(x,y) {
@@ -36,45 +39,63 @@ function writeToOutput(x,y) {
         // concatinate digit
         case 1: 
             result=result + y.toString();
-            document.getElementById("output").innerHTML=result;  
+            document.getElementById("output").innerHTML=result;
+            pressedOperandButton=0;  
         break;
         case 2:
         // prepare +
             calculate(operand);
             temp=result;
             result="";
-            document.getElementById("output").innerHTML=temp;
+            if(pressedOperandButton==0){
+                document.getElementById("output").innerHTML=temp;
+            }
             operand=2;
+             pressedOperandButton=1;
+
         break;
         // prepare -
         case 3:
             calculate(operand);
             temp=result;
             result="";
-            document.getElementById("output").innerHTML=temp;
+            if(pressedOperandButton==0){
+                document.getElementById("output").innerHTML=temp;
+            }
             operand=3;
+            pressedOperandButton=1;
         break;
         // prepare *
         case 4:
             calculate(operand)
             temp=result;
             result="";
-            document.getElementById("output").innerHTML=temp;
+            if(pressedOperandButton==0){
+                document.getElementById("output").innerHTML=temp;
+            }
             operand=4;
+            pressedOperandButton=1;
         break;
         // prepare /    
         case 5:
             calculate(operand);
             temp=result;
             result="";
-            document.getElementById("output").innerHTML=temp;
+            if(pressedOperandButton==0){
+                document.getElementById("output").innerHTML=temp;
+            }
             operant=5;
+            pressedOperandButton=1;
         break;
         // =
         case 6:
-            calculate(operand);
-            document.getElementById("output").innerHTML=storedValue;
-            operand=0;
+            if(pressedOperandButton==0){
+                calculate(operand);
+                result=storedValue;
+                document.getElementById("output").innerHTML=storedValue;
+                pressedOperandButton=1;
+                operand=0;
+            }
         break;
         // reset
         case 7:
@@ -83,6 +104,7 @@ function writeToOutput(x,y) {
             operand=0;
             document.getElementById("output").innerHTML="0";
             document.getElementById("res").innerHTML="0";
+            pressedOperandButton=0;
         break;
     }
 
