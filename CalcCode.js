@@ -1,7 +1,9 @@
 let result="";
 let storedValue=0;
+let storedValue1=0;
 let operand=0;
 let pressedOperandButton=0;
+let Num = 0;
 function calculate(z){
     if(pressedOperandButton==0){
         switch(z){
@@ -22,13 +24,14 @@ function calculate(z){
                 document.getElementById("res").innerHTML=storedValue;
             break;
             case 5:
-                if(Number(result)==0){
+                Num = Number(result);
+                if(Num==0){
                     document.getElementById("res").innerHTML="NaN"; 
                     document.getElementById("output").innerHTML="NaN";
                 }
                 else{
-                    storedValue=storedValue/Number(result);
-                    document.getElementById("res").innerHTML=storedValue;
+                    storedValue1=storedValue1/Number(result);
+                    document.getElementById("res").innerHTML=storedValue1;
                 }
             break;    
         }
