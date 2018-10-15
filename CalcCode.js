@@ -1,15 +1,15 @@
 let result="";
 let storedValue=0;
 let storedValue1=0;
-let operand=0;
-let pressedOperandButton=0;
+let operator=0;
+let pressedOperatorButton=0;
 let Num = 0;
 function show(){
-    document.getElementById("debug0").innerHTML= "storedValue =" + storedValue + " " + "storedValue1 =" + storedValue1 + " " + "result =" + result + " " + "operand =" + operand;
-    document.getElementById("debug1").innerHTML= "pressedOperandButton =" + pressedOperandButton + " " + "operand =" + operand + "Num =" + Num;
+    document.getElementById("debug0").innerHTML= "storedValue =" + storedValue + " " + "storedValue1 =" + storedValue1 + " " + "result =" + result + " " + "operator =" + operator;
+    document.getElementById("debug1").innerHTML= "pressedOperatorButton =" + pressedOperatorButton + " " + "operator =" + operator + "Num =" + Num;
 }
 function calculate(z){
-    if(pressedOperandButton==0){
+    if(pressedOperatorButton==0){
         switch(z){
             case 0:
                 storedValue=Number(result);
@@ -38,8 +38,8 @@ function calculate(z){
                     document.getElementById("output").innerHTML="NaN";
                     show();
                 }else{
-                    storedValue1=storedValue1/Number(result);
-                    document.getElementById("res").innerHTML=storedValue1;
+                    storedValue=((storedValue)/(Number(result)));
+                    document.getElementById("res").innerHTML=storedValue;
                     show();
                 }
             break;    
@@ -51,70 +51,70 @@ function writeToOutput(x,y) {
         case 1:  // concatinate digit 
             result=result + y.toString();
             document.getElementById("output").innerHTML=result;
-            pressedOperandButton=0;
+            pressedOperatorButton=0;
             show();  
         break;
 
         case 2:  // prepare +
-            calculate(operand);
+            calculate(operator);
             temp=Number(result);
             result="";
-            if(pressedOperandButton==0){
+            if(pressedOperatorButton==0){
                 document.getElementById("output").innerHTML=temp;
                 show();
             }
-            operand=2;
-             pressedOperandButton=1;
+            operator=2;
+             pressedOperatorButton=1;
              show();
 
         break;
 
         case 3:  // prepare -
-            calculate(operand);
+            calculate(operator);
             temp=Number(result);
             result="";
-            if(pressedOperandButton==0){
+            if(pressedOperatorButton==0){
                 document.getElementById("output").innerHTML=temp;
                 show();
             }
-            operand=3;
-            pressedOperandButton=1;
+            operator=3;
+            pressedOperatorButton=1;
             show();
         break;
 
         case 4:  // prepare *
-            calculate(operand)
+            calculate(operator)
             temp=Number(result);
             result="";
-            if(pressedOperandButton==0){
+            if(pressedOperatorButton==0){
                 document.getElementById("output").innerHTML=temp;
                 show();
             }
-            operand=4;
-            pressedOperandButton=1;
+            operator=4;
+            pressedOperatorButton=1;
             show();
         break;
 
         case 5:  // prepare /
-            calculate(operand);
+            calculate(operator);
             temp=Number(result);
             result="";
-            if(pressedOperandButton==0){
+            if(pressedOperatorButton==0){
                 document.getElementById("output").innerHTML=temp;
                 show();
             }
-            operant=5;
-            pressedOperandButton=1;
+            operator=5;
+            pressedOperatorButton=1;
             show();
         break;
 
         case 6:  // =
-            if(pressedOperandButton==0){
-                calculate(operand);
+            if(pressedOperatorButton==0){
+                calculate(operator);
                 result=storedValue;
                 document.getElementById("output").innerHTML=storedValue;
-                pressedOperandButton=1;
-                operand=0;
+                pressedOperatorButton=1;
+                operator=0;
                 show();
             }
         break;
@@ -122,10 +122,10 @@ function writeToOutput(x,y) {
         case 7:  // reset
             storedValue=0;
             result="";
-            operand=0;
+            operator=0;
             document.getElementById("output").innerHTML="0";
             document.getElementById("res").innerHTML="0";
-            pressedOperandButton=0;
+            pressedOperatorButton=0;
             show();
         break; 
 }
